@@ -41,6 +41,12 @@
   (IS (string= (make-string 3 :initial-element #\a)
                "aaa")))
 
+
+(TEST Special-variables
+  (IS (= (let ((*read-base* 8.))
+           (read-from-string "11"))
+         9.)))
+
 (TEST Print
   (IS (string= (princ-to-string 'Zombie)
                "Zombie"))

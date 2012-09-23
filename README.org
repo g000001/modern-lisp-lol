@@ -30,6 +30,12 @@
 ;=>  T
 
 
+(= (let ((*read-base* 8.))
+           (read-from-string "11"))
+         9.)
+;=>  T
+
+
 (defun keytest1 (n &key (FOO 3))
   (list n FOO))
 
