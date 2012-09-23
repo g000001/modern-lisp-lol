@@ -30,9 +30,7 @@
 ;=>  T
 
 
-(= (let ((*read-base* 8))
-           (read-from-string "11"))
-         9)
+(= (let ((*read-base* 8)) (read-from-string "11")) 9)
 ;=>  T
 
 
