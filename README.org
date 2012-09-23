@@ -1,0 +1,87 @@
+* モダ〜ン Lisp(笑) 
+
+#+BEGIN_SRC
+(cl:in-package "modern-lisp-lol.test")
+(IN-READTABLE :MODERN-LISP-LOL)
+
+(import 'CL:T)
+;=>  T
+
+(import 'CL:NIL)
+;=>  T
+
+
+(string= (symbol-name 'foo)
+         "foo" )
+;=>  T
+
+
+(string= (symbol-name 'Foo) "Foo")
+;=>  T
+
+
+;; !!! 
+(string= (symbol-name :Foo) "FOO")
+;=>  T
+
+
+(string= (symbol-name :|Foo|)
+         "Foo")
+;=>  T
+
+
+(defun keytest1 (n &key (FOO 3))
+  (list n FOO))
+
+
+(defun keytest2 (n &key ((:foo foo) 3))
+  (list n foo))
+
+
+(defun keytest3 (n &key (foo 3))
+  (list n foo))
+
+
+(string= (make-string 3 :initial-element #\a)
+         "aaa")
+;=>  T
+
+
+(equal (keytest3 1 :|foo| 2)
+       (list 1 2))
+;=>  T
+
+
+(equal (keytest2 1 :foo 2)
+       (list 1 2))
+;=>  T
+
+
+(equal (keytest1 1 :foo 2)
+       (list 1 2))
+;=>  T
+
+
+(string= (princ-to-string 'Zombie)
+         "Zombie")
+;=>  T
+
+
+(string= (princ-to-string 'zombie)
+         "zombie")
+;=>  T
+
+
+(eq 'zombie 'Zombie)
+;=>  NIL
+
+
+(eq 'Zombie 'Zombie)
+;=>  T
+
+
+(read-from-string "#+(#.(cl:if(cl:equal(cl:format()\"~A\"(cl:read-from-string \"#:m\"))\"M\") :or :and)) (pushnew :case-sensitiveness *features*)")
+;=>  (pushnew :CASE-SENSITIVENESS *FEATURES*)
+;    120
+#+END_SRC
+
